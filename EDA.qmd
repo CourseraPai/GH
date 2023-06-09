@@ -1,0 +1,35 @@
+---
+title: "Penguins EDA GH Trial3"
+
+---
+
+## Penguin Size and Mass by Sex and Species
+
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+
+df <- palmerpenguins::penguins
+```
+
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+df %>%
+  group_by(species, sex) %>%
+  summarise(
+    across(
+      where(is.numeric), 
+      \(x) mean(x, na.rm = TRUE)
+      )
+    ) %>%
+  knitr::kable()
+```
+
+## Penguin Size vs Mass Species
+
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+df %>%
+  ggplot(aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
