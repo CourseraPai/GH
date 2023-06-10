@@ -1,5 +1,5 @@
 ---
-title: "Penguins EDA GH Trial3"
+title: "Penguins EDA GH Trial"
 
 ---
 
